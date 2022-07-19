@@ -90,8 +90,8 @@ class Square:
 
         else:
             for i in range(self.size):
-                for k in range(self.__position[0]):
-                    print(" ", end="")
+                print("".join([" " for k in range(self.__position[0])]),
+                      end="")
                 for j in range(self.size):
                     print("#", end="")
                 print("")
