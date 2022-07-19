@@ -31,14 +31,17 @@ class Square:
         Args:
             value (int): value to be passed to the private \
                             attribute position
+
+        Return:
+            The return value. None.
         """
-        for i in value:
-            if type(i) is not int or i < 0 or \
-                                len(value) != 2:
-                raise TypeError("position must be a \
+        if type(value) is not tuple or len(value) != 2 or \
+           type(value[0]) is not int or value[0] < 0 or \
+           type(value[1]) is not int or value[1] < 0:
+            raise TypeError("position must be a \
                        tuple of 2 positive integers")
-            else:
-                self.__position = value
+        else:
+            self.__position = value
 
     @property
     def size(self):
