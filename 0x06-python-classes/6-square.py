@@ -82,16 +82,18 @@ class Square:
         Define a method to print a square of "#" characters
         Print the "#" equivalent to the area of the square
         print empty line if size == 0
+
+        Return:
+            The return. None.
         """
-        if self.size == 0:
+        if self.__size == 0:
             print()
+            return
         for i in range(self.__position[1]):
             print()
 
         else:
-            for i in range(self.size):
+            for i in range(self.__size):
                 print("".join([" " for k in range(self.__position[0])]),
                       end="")
-                for j in range(self.size):
-                    print("#", end="")
-                print("")
+                print("".join(["#" for j in range(self.__size)]))
