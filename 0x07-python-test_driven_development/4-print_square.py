@@ -1,6 +1,15 @@
 #!/usr/bin/python3
 def print_square(size):
     """
+
+    prints a square of '#'
+
+    Args:
+        Size: Dimensions of the square
+
+    Return:
+        The return. None
+
     """
 
     if type(size) is not int:
