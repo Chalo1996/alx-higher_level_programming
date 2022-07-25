@@ -2,10 +2,12 @@
 """
 Empty class object Rectangle.
 
-Defines a rectangle.
 """
 
 
 class Rectangle:
+    """
+    Defines an empty class
+    """
     def __init__(self):
         pass
