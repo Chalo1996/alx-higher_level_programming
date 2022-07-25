@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 """
-Empty class object Rectangle.
+Describe a rectangle.
 """
 
 
 class Rectangle:
     """
-    Defines an empty class
+    Define a rectangle object class
     """
 
     def __init__(self, width=0, height=0):
@@ -15,8 +15,8 @@ class Rectangle:
             width (int): Default width for the class object.
             height (int): Default height for the class object.
         """
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
@@ -49,8 +49,7 @@ class Rectangle:
         if value < 0:
             raise ValueError("width must be >= 0")
 
-        else:
-            self.__width = value
+        self.__width = value
 
     @property
     def height(self):
@@ -83,5 +82,4 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
 
-        else:
-            self.__height = value
+        self.__height = value
