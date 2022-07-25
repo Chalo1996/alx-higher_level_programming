@@ -7,4 +7,5 @@ Defines a rectangle.
 
 
 class Rectangle:
-    pass
+    def __init__(self):
+        pass
