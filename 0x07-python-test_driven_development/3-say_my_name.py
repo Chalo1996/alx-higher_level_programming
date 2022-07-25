@@ -8,6 +8,9 @@ def say_my_name(first_name, last_name=""):
         first_name: user's first name
         last_name: optional last name
 
+    Return:
+        The return. None
+
     """
 
     if type(first_name) is not str:
