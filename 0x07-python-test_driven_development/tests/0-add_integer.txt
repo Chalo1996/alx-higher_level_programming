@@ -1,0 +1,70 @@
+The ``add_integer`` module
+===========================
+
+Testing the ``add_integer`` function
+------------------------------------
+
+"""
+Import the function add_integer:
+		>>> add_integer = __import__("0-add_integer").add_integer
+
+Test for one integer input:
+		>>> add_integer(1)
+		99
+
+		>>> add_integer(-1)
+		97
+
+		>>> add_integer(-1000)
+		-902
+
+Test for two integer input:
+		>>> add_integer(1, 1)
+		2
+
+		>>> add_integer(999999999999999999999, 20000000111111)
+		1000000020000000111110
+
+		>>> add_integer(1, -1)
+		0
+
+		>>> add_integer(0, 0)
+		0
+
+		>>> add_integer(-1, -1)
+		-2
+
+Test for float inputs:
+		>>> add_integer(-1.0007)
+		97
+
+		>>> add_integer(0.0007, -100.6678)
+		-100
+
+		>>> add_integer(-100, 100.567)
+		0
+
+Test for no value passed:
+		>>> add_integer()
+		Traceback (most recent call last):
+		...
+		TypeError: add_integer() missing 1 required positional argument: 'a'
+
+Test for more than two values:
+		>>> add_integer(1, 5, 90)
+		Traceback (most recent call last):
+		...
+		TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
+
+Test for string input:
+		>>> add_integer("hi")
+		Traceback (most recent call last):
+		...
+		TypeError: a must be an integer
+
+		>>> add_integer(2, "Hi")
+		Traceback (most recent call last):
+		...
+		TypeError: b must be an integer
+
+"""
