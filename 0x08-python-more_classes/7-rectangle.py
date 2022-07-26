@@ -101,7 +101,7 @@ class Rectangle:
         """
         mystr = ""
         if self.__width != 0 and self.__height != 0:
-            mystr += "\n".join("#" * self.__width
+            mystr += "\n".join(str(self.print_symbol) * self.__width
                                for i in range(self.__height))
         return mystr
 
