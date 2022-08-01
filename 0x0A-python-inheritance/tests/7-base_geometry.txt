@@ -1,0 +1,51 @@
+The `base_geometry` module
+===========================
+
+Tests for the `baseGeometry` class
+-----------------------------------
+
+"""
+Importing the module:
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Check for module docstring:
+    >>> doc = __import__('7-base_geometry').__doc__
+    >>> len(doc) > 1
+    True
+
+Check for class docstring:
+    >>> docstr = __import__('7-base_geometry').BaseGeometry.__doc__
+    >>> len(docstr) > 1
+    True
+
+Check for method docstring:
+    >>> docmethod_one = __import__('7-base_geometry').BaseGeometry
+    >>> len(docmethod_one.area.__doc__) > 1
+    True
+    >>> docmethod_two = __import__('7-base_geometry').BaseGeometry
+    >>> len(docmethod_two.integer_validator.__doc__) > 1
+    True
+
+Test for area:
+    >>> a = BaseGeometry()
+    >>> a.area()
+    Traceback (most recent call last):
+    ...
+    Exception: area() is not implemented
+
+Test if  integer_validator takes an int:
+    >>> a.integer_validator("Hello", 56)
+
+Check for int == 0:
+    >>> a.integer_validator("Value", 0)
+    Traceback (most recent call last):
+    ...
+    ValueError: Value must be greater than 0
+
+Checking for non-integer types:
+    >>> a.integer_validator("Hi", True)
+    Traceback (most recent call last):
+    ...
+    TypeError: Hi must be an integer
+
+"""
