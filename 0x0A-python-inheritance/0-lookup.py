@@ -12,4 +12,4 @@ def lookup(obj):
         object
     """
 
-    return obj.__dict__
+    return dir(obj)
