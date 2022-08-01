@@ -1,0 +1,50 @@
+Tests for the `1-my_list.py` script
+===================================
+
+Testing the `MyList` class
+
+"""
+Importing the module:
+    >>> MyList = __import__('1-my_list').MyList
+
+Check for module docstring:
+    >>> lst = __import__('1-my_list').__doc__
+    >>> len(lst) > 1
+    True
+
+Check for class docstring:
+    >>> lst = __import__('1-my_list').MyList.__doc__
+    >>> len(lst) > 1
+    True
+
+Check for method docstring:
+    >>> lst = __import__('1-my_list').MyList.print_sorted.__doc__
+    >>> len(lst) > 1
+    True
+
+Check if MyList inherits from list:
+    >>> issubclass(MyList, list)
+    True
+
+Check if values are appended correctly:
+    >>> lst = MyList()
+    >>> lst.append(2)
+    >>> lst.append(4)
+    >>> lst.append(16)
+    >>> lst.append(32)
+    >>> lst.append(8)
+    >>> print(sorted(lst))
+    [2, 4, 8, 16, 32]
+
+Checking for sorted order:
+    >>> lst = MyList()
+    >>> lst.append(2)
+    >>> lst.append(4)
+    >>> lst.append(16)
+    >>> lst.append(32)
+    >>> lst.append(8)
+    >>> lst.print_sorted()
+    [2, 4, 8, 16, 32]
+
+
+"""
