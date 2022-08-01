@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Contins the inherits_from module
+"""Contains the inherits_from module
 """
 
 
