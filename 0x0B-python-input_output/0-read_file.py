@@ -3,7 +3,7 @@
 """
 
 
-def read_file(filename="my_file_0.txt"):
+def read_file(filename=""):
     """Reads a text file
     """
     with open(filename, encoding="utf-8") as f:
