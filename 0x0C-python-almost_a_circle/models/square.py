@@ -30,6 +30,7 @@ class Square(Rectangle):
             self.__squareArgs(**kwargs)
 
     def __squareArgs(self, id=None, size=None, x=None, y=None):
+        """Validates the args passed"""
         if id is not None:
             self.id = id
 
