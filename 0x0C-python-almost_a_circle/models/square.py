@@ -45,11 +45,14 @@ class Square(Rectangle):
 
     def __str__(self):
         return "[Square] \
-            ({:d}) {:d}/{:d} - {:d}".format(self.id, self.x, self.y, self.size)
+            ({:d}) {:d}/{:d} - {:d}".format(self.id, self.x, self.y, self.width)
 
     def to_dictionary(self):
         """returns a dictionary representation of a square
         """
-        return {
-            'id': self.id, 'size': self.size, 'x': self.x, 'y': self.y
-        }
+        dict = {}
+        dict["id"] = self.id
+        dict["size"] = self.size
+        dict["x"] = self.x
+        dict["y"] = self.y
+        return dict
