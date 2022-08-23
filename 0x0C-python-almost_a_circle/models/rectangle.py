@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Contains the Rectangle class
+"""Contains the "Rectangle" class
 """
 
 
@@ -122,6 +122,7 @@ class Rectangle(Base):
             self.__argpassed(**kwargs)
 
     def __argpassed(self, id=None, width=None, height=None, x=None, y=None):
+        """Validates the args passed"""
         if id is not None:
             self.id = id
         if width is not None:
