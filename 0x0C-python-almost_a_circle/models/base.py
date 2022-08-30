@@ -4,7 +4,6 @@
 
 
 import json
-from os import path
 
 
 class Base:
@@ -34,18 +33,22 @@ class Base:
         if not list_dictionaries:
             return "[]"
 
-        for dct in list_dictionaries:
-            return json.dumps(dct)
+        return (json.dumps(list_dictionaries))
 
     @classmethod
     def save_to_file(cls, list_objs):
         """writes the JSON string representation of list_objs to a file
         """
-        if list_objs is not None:
-            list_objs = [obj.to_dictionary() for obj in list_objs]
+        filename = "{}.json".format(cls.__name__)
 
-        with open("{}.json".format(cls.__name__), "w", encoding="utf-8") as f:
-            f.write(cls.to_json_string(list_objs))
+        my_list = []
+
+        if list_objs is not None:
+            for obj in list_objs:
+                my_list.append(cls.to_dictionary(obj))
+
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(cls.to_json_string(my_list))
 
     @staticmethod
     def from_json_string(json_string):
@@ -64,10 +67,10 @@ class Base:
         from models.square import Square
 
         if cls is Rectangle:
-            dummy = Rectangle(23, 10)
+            dummy = Rectangle(2, 1)
 
         elif cls is Square:
-            dummy = Square(10)
+            dummy = Square(1)
 
         else:
             dummy = None
@@ -78,11 +81,18 @@ class Base:
     def load_from_file(cls):
         """returns a list of instances
         """
-        file = "{}.json".format(cls.__name__)
-        if not path.isfile(file):
-            return []
+        filename = "{}.json".format(cls.__name__)
 
-        with open(file, "r", encoding="utf-8") as f:
-            return [
-                cls.create(**dct) for dct in cls.from_json_string(f.read())
-            ]
+        lst = []
+
+        try:
+            with open(filename, "r") as f:
+                lst = cls.from_json_string(f.read())
+
+            for i, val in enumerate(lst):
+                lst[i] = cls.create(**lst[i])
+
+        except FileNotFoundError:
+            pass
+
+        return lst
