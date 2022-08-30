@@ -14,11 +14,11 @@ class Rectangle(Base):
 
         Creates private instance attributes
         """
+        super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
-        super().__init__(id)
 
     @property
     def width(self):
@@ -27,12 +27,15 @@ class Rectangle(Base):
         return self.__width
 
     @width.setter
-    def width(self, width):
+    def width(self, val):
         """Defines a width setter
         """
-        self.validator_for_all(width, "width", flag=False)
+        if type(val) is not int:
+            raise TypeError("{} must be an integer".format("width"))
 
-        self.__width = width
+        if val <= 0:
+            raise ValueError("{} must be > 0".format("width"))
+        self.__width = val
 
     @property
     def height(self):
@@ -41,12 +44,15 @@ class Rectangle(Base):
         return self.__height
 
     @height.setter
-    def height(self, height):
+    def height(self, val):
         """Defines a height setter
         """
-        self.validator_for_all(height, "height", flag=False)
+        if type(val) is not int:
+            raise TypeError("{} must be an integer".format("height"))
 
-        self.__height = height
+        if val <= 0:
+            raise ValueError("{} must be > 0".format("height"))
+        self.__height = val
 
     @property
     def x(self):
@@ -55,12 +61,15 @@ class Rectangle(Base):
         return self.__x
 
     @x.setter
-    def x(self, x):
+    def x(self, val):
         """Defines a x setter
         """
-        self.validator_for_all(x, "x", flag=True)
+        if type(val) is not int:
+            raise TypeError("{} must be an integer".format("x"))
 
-        self.__x = x
+        if val < 0:
+            raise ValueError("{} must be >= 0".format("x"))
+        self.__x = val
 
     @property
     def y(self):
@@ -69,49 +78,44 @@ class Rectangle(Base):
         return self.__y
 
     @y.setter
-    def y(self, y):
+    def y(self, val):
         """Defines a y setter
         """
-        self.validator_for_all(y, "y", flag=True)
+        if type(val) is not int:
+            raise TypeError("{} must be an integer".format("y"))
 
-        self.__y = y
-
-    def validator_for_all(self, val_input, name, flag=None):
-        """Validates the attrs inputs
-        """
-        if type(val_input) is not int:
-            raise TypeError("{} must be an integer".format(name))
-
-        if flag is False:
-            if val_input <= 0:
-                raise ValueError("{} must be > 0".format(name))
-
-        if flag is True:
-            if val_input < 0:
-                raise ValueError("{} must be >= 0".format(name))
+        if val < 0:
+            raise ValueError("{} must be >= 0".format("y"))
+        self.__y = val
 
     def area(self):
         """Returns the area of the rectangle
         """
         A = self.width * self.height
-        return A
+        return (A)
 
     def display(self):
         """Prints Rectangle instance with '#' character
         """
-        for k in range(self.y):
-            print()
+        for i in range(self.y):
+            print("")
 
         for i in range(self.height):
-            print("".join([" " for i in range(self.x)]), end="")
-            print("".join(["#" for j in range(self.width)]), end="")
-            print("")
+            for k in range(self.x):
+                print(" ", end="")
+            for j in range(self.width):
+                print("#", end="")
+            print()
 
     def __str__(self):
         """Returns a neatly formatted output
         """
-        return "[Rectangle] ({:d}) {:d}/{:d} - \
-        {:d}/{:d}".format(self.id, self.x, self.y, self.width, self.height)
+        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+                                                                self.id,
+                                                                self.x,
+                                                                self.y,
+                                                                self.width,
+                                                                self.height)
 
     def update(self, *args, **kwargs):
         """Assigns an argument to each attribute
@@ -137,7 +141,11 @@ class Rectangle(Base):
     def to_dictionary(self):
         """returns the dictionary representation of a Rectangle
         """
-        return {
-            'id': self.id, 'width': self.width,
-            'height': self.height, 'x': self.x, 'y': self.y
-        }
+        my_dict = {}
+        my_dict['id'] = self.id
+        my_dict['width'] = self.width
+        my_dict['height'] = self.height
+        my_dict['x'] = self.x
+        my_dict['y'] = self.y
+
+        return (my_dict)
