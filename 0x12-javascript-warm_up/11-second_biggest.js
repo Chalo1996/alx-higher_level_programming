@@ -2,7 +2,6 @@
 
 const args = process.argv.slice(2);
 let biggest = process.argv[2];
-let i;
 
 if (args.length > 1) {
   for (let i = 0; i < args.length; i++) {
