@@ -1,10 +1,11 @@
 #!/usr/bin/node
 
 const argsLen = process.argv.length;
+const args = process.argv;
 let biggest = process.argv[2];
 let i;
 
-if (argsLen <= 3) {
+if ((args === process.argv[0] && args === process.argv[1])) {
   console.log(0);
 } else {
   for (let i = 0; i < argsLen; i++) {
