@@ -2,7 +2,7 @@
 
 const firstInt = process.argv[2];
 
-function fact(x) {
+function fact (x) {
   if (isNaN(x)) {
     return (1);
   } else {
@@ -12,6 +12,6 @@ function fact(x) {
       return (x * fact(x - 1));
     }
   }
-};
+}
 
 console.log(fact(firstInt));
