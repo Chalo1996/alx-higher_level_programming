@@ -8,7 +8,7 @@ if (isNaN(argNum)) {
   for (let i = 0; i < argNum; i++) {
     let str = '';
     for (let j = 0; j < argNum; j++) {
-      str += 'x';
+      str += 'X';
     }
     console.log(str);
   }
