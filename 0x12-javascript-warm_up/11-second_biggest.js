@@ -1,20 +1,17 @@
 #!/usr/bin/node
 
-const argsLen = process.argv.length;
-const args = process.argv;
+const args = process.argv.slice(2);
 let biggest = process.argv[2];
 let i;
 
-if ((args === process.argv[0] && args === process.argv[1])) {
-  console.log(0);
-} else {
-  for (let i = 0; i < argsLen; i++) {
+if (args.length > 1) {
+  for (let i = 0; i < args.length; i++) {
     if (biggest < process.argv[i]) {
       biggest = process.argv[i];
     }
   }
   let secondBiggest = process.argv[3];
-  for (let j = 0; j < argsLen; j++) {
+  for (let j = 0; j < args.length; j++) {
     if (process.argv[j] !== biggest && i !== j) {
       if (process.argv[j] > secondBiggest) {
         secondBiggest = process.argv[j];
@@ -22,4 +19,6 @@ if ((args === process.argv[0] && args === process.argv[1])) {
     }
   }
   console.log(secondBiggest);
+} else {
+  console.log(0);
 }
