@@ -2,7 +2,7 @@
 
 const firstInt = process.argv[2];
 
-const fact = (x) => {
+function fact(x) {
   if (isNaN(x)) {
     return (1);
   } else {
