@@ -9,10 +9,8 @@ import MySQLdb
 from sys import argv
 
 
-arg = argv[4]
-
-
 if __name__ == '__main__':
+    arg = argv[4]
     conn = MySQLdb.connect(
         host='localhost',
         port=3306,
