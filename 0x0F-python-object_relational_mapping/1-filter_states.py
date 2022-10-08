@@ -22,7 +22,8 @@ if __name__ == '__main__':
     names = cur.fetchall()
 
     for name in names:
-        print(name)
+        if name[1][0] == 'N':
+            print(name)
 
     cur.close()
     conn.close()
