@@ -8,9 +8,7 @@ from sys import argv
 
 
 if __name__ == '__main__':
-    arg = ''
-    for argName in argv[4:]:
-        arg += argName
+    arg = argv[4]
 
     conn = MySQLdb.connect(
         host="localhost",
@@ -22,14 +20,13 @@ if __name__ == '__main__':
     )
 
     cur = conn.cursor()
-    cur.execute('SELECT * FROM states WHERE name LIKE "{:s}"\
-        ORDER BY id ASC'.format(arg))
+    cur.execute('SELECT * FROM states WHERE name LIKE %s\
+        ORDER BY id ASC', (arg,))
 
     argsNames = cur.fetchall()
 
     for argsName in argsNames:
-        if argsName[1] in arg:
-            print(argsName)
+        print(argsName)
 
     cur.close()
     conn.close()
