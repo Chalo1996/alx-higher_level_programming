@@ -27,8 +27,8 @@ if __name__ == '__main__':
 
     state_name = session.query(State).filter_by(name=arg).first()
 
-    if arg is not None:
-        print(str(state_name.id))
+    if state_name is not None:
+        print(state_name.id)
     else:
         print("Not found")
 
