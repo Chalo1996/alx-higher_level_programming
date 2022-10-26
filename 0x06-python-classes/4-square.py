@@ -4,6 +4,7 @@
 
 class Square:
     """Defines a Square"""
+
     def __init__(self, size=0):
         """
         Creates field size of size parameter
@@ -35,7 +36,7 @@ class Square:
             Raise TypeError if size is not an integer and
             ValueError if size is negative
         """
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
             raise ValueError("size must be >= 0")

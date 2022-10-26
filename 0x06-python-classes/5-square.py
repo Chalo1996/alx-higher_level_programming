@@ -4,6 +4,7 @@
 
 class Square:
     """Defines a Square"""
+
     def __init__(self, size=0):
         """
         Creates field size of size parameter
