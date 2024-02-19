@@ -11,8 +11,47 @@ class Square:
         Args:
             size: The size of the square
         """
-        self.size = size
-        self.position = position
+        self.__sizetypechecker(size)
+        self.__positionchecker(position)
+        self.__size = size
+        self.__position = position
+
+    def __sizetypechecker(self, size):
+        """
+        Checks if size is an integer
+        Args:
+            size: The size to be checked
+        Return:
+            The return size. True if size is an integer
+        """
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        if size < 0:
+            raise ValueError("size must be >= 0")
+        return True
+
+    def __positionchecker(self, position):
+        """
+        Checks if position is a tuple of 2 positive integers
+        Args:
+            size: The position to be checked
+        Return:
+            The return position. True if position is a tuple of 2 positive \
+                            integers
+        """
+        if not isinstance(position, tuple) or len(position) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if not isinstance(
+                position[0],
+                int) or not isinstance(
+                position[1],
+                int):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        for pos in position:
+            if pos < 0:
+                raise TypeError(
+                    "position must be a tuple of 2 positive integers")
+        return True
 
     @property
     def position(self):
@@ -20,7 +59,7 @@ class Square:
         Define a getter for the position attribute
 
         Return:
-            The return value. The private attribute __postion
+            The return position. The private attribute __postion
         """
         return self.__position
 
@@ -36,11 +75,7 @@ class Square:
         Return:
             The return tuples. None.
         """
-        if not isinstance(tuples, tuple) or \
-           len(tuples) != 2 or not isinstance(tuples[0], int) or \
-           not isinstance(tuples[1], int) or \
-                tuples[0] < 0 or tuples[1] < 0:
-            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__positionchecker(tuples)
         self.__position = tuples
 
     @property
@@ -48,31 +83,28 @@ class Square:
         """
         Defines a getter method for the size attribute
         Return:
-            The return value. private size attribute
+            The return size. private size attribute
         """
         return self.__size
 
     @size.setter
-    def size(self, value):
+    def size(self, size):
         """
         Creates a setter for the private attribute size
         Args:
-            value: The parameter to assign to the attribute
+            size: The parameter to assign to the attribute
         Instructions:
             Raise TypeError if size is not an integer and
-            ValueError if size is negative
+            sizeError if size is negative
         """
-        if not isinstance(value, int):
-            raise TypeError("size must be an integer")
-        if value < 0:
-            raise ValueError("size must be >= 0")
-        self.__size = value
+        self.__sizetypechecker(size)
+        self.__size = size
 
     def area(self):
         """
         Define area of a square.
         Returns:
-            The return value. Square of size
+            The return size. Square of size
         """
         return self.__size * self.__size
 
@@ -93,4 +125,4 @@ class Square:
             print("")
 
         for _ in range(self.__size):
-            print(" " * self.__position[0] + "#" * self.__size)
+            print(f'{" " * self.__position[0]}{"#" * self.__size}')
