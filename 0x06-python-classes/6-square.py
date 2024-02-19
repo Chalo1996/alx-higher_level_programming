@@ -25,23 +25,23 @@ class Square:
         return self.__position
 
     @position.setter
-    def position(self, value):
+    def position(self, tuples):
         """
         Define a setter for the position attribute
 
         Args:
-            value (int): value to be passed to the private \
+            tuples (int): tuples to be passed to the private \
                             attribute position
 
         Return:
-            The return value. None.
+            The return tuples. None.
         """
-        if type(value) is not tuple or len(value) != 2 or \
-           type(value[0]) is not int or value[0] < 0 or \
-           type(value[1]) is not int or value[1] < 0:
+        if not isinstance(tuples, tuple) or \
+           len(tuples) != 2 or not isinstance(tuples[0], int) or \
+           not isinstance(tuples[1], int) or \
+                tuples[0] < 0 or tuples[1] < 0:
             raise TypeError("position must be a tuple of 2 positive integers")
-        else:
-            self.__position = value
+        self.__position = tuples
 
     @property
     def size(self):
@@ -62,12 +62,11 @@ class Square:
             Raise TypeError if size is not an integer and
             ValueError if size is negative
         """
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
-        else:
-            self.__size = value
+        self.__size = value
 
     def area(self):
         """
@@ -93,10 +92,9 @@ class Square:
         for i in range(self.__position[1]):
             print("")
 
-        else:
-            for i in range(self.__size):
-                for k in range(self.__position[0]):
-                    print(" ", end="")
-                for j in range(self.__size):
-                    print("#", end="")
-                print("")
+        for i in range(self.__size):
+            for k in range(self.__position[0]):
+                print(" ", end="")
+            for j in range(self.__size):
+                print("#", end="")
+            print("")
