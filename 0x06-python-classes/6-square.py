@@ -128,9 +128,8 @@ class Square:
                 # Check if line should be filled with spaces based on
                 # position[1]
                 if self.__position[1] > 0:
-                    print("#" * self.size)  # Print without spaces
-                else:
-                    # Add spaces for horizontal positioning
-                    for _ in range(self.__position[0]):
-                        print(" ", end="")
-                    print("#" * self.size)
+                    continue  # Print without spaces
+                # Add spaces for horizontal positioning
+                for _ in range(self.__position[0]):
+                    print(" ", end="")
+                print("#" * self.size)
