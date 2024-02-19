@@ -118,11 +118,19 @@ class Square:
             The return. None.
         """
 
-        if self.__size == 0:
-            print("")
-
-        for _ in range(self.__position[1]):
-            print("")
-
-        for _ in range(self.__size):
-            print(f'{" " * self.__position[0]}{"#" * self.__size}')
+        if self.size == 0:
+            print()
+        else:
+            for _ in range(self.__position[1]):
+                print()  # Adjust for vertical position
+    
+            for _ in range(self.size):
+                # Check if line should be filled with spaces based on position[1]
+                if self.__position[1] > 0:
+                    print("#" * self.size)  # Print without spaces
+                else:
+                    # Add spaces for horizontal positioning
+                    for _ in range(self.__position[0]):
+                        print(" ", end="")
+                    print("#" * self.size)
+    
